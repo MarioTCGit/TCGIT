@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="server.dao.TestMapper">
+
+	<resultMap id="PecRMap" type="pojo.Pec_r">
+		<id column="pk" jdbcType="VARCHAR" property="pk" />
+		<result column="bvalue" jdbcType="BLOB" property="bvalue" />
+	</resultMap>
+	<delete id="deleteBValue" parameterType="String">
+		DELETE PEC_R
+		WHERE
+		PK =
+		#{pk,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="addBValue" parameterType="pojo.Pec_r">
+		INSERT INTO PEC_R (
+		PK,
+		BVALUE
+		)
+		VALUES (
+		#{pk,jdbcType=VARCHAR},
+		RAWTOHEX(#{bvalue,jdbcType=BLOB})
+		)
+	</insert>
+
+	<select id="getBValue" parameterType="java.lang.String"
+		resultMap="PecRMap">
+		SELECT * FROM PEC_R
+		WHERE
+		PK =
+		#{pk,jdbcType=VARCHAR}
+	</select>
+
+</mapper>
