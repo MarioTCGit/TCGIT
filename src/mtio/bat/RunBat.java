@@ -2,7 +2,8 @@ package mtio.bat;
 
 import java.io.IOException;
 
-public class RunBat {
+public class RunBat extends CommondBat {
+
 	public RunBat(String commond) {
 		Runtime rt = Runtime.getRuntime();
 		Process ps = null;
@@ -16,9 +17,9 @@ public class RunBat {
 		}
 		int i = ps.exitValue();
 		if (i == 0) {
-			System.out.println("执行完成.");
+			result = "Y";
 		} else {
-			System.out.println("执行失败.");
+			result = "N";
 		}
 		ps.destroy();
 		ps = null;
