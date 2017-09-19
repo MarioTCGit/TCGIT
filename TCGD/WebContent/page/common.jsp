@@ -21,7 +21,8 @@
 <script src="../js/jquery-ui.js"></script>
 <script src="../js/jquery-ui.min.js"></script>
 
-<script src="../js/userPage/userPage.js"></script>
+<script src="../js/userPage.js"></script>
+
 <title>common JSP</title>
 </head>
 </html>

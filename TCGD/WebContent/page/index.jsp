@@ -6,8 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>index</title>
 <script src="./js/jquery-2.1.4.js"></script>
-<script src="./js/angular.js"></script>
-
 <script>
 	function testJsonToString() {
 		var obj;
@@ -42,11 +40,7 @@
 	}
 </script>
 </head>
-<body class="body-background">
-	<a href="userController/login">SMJP</a>
-	<br />
-	<a href="test/jump">Main</a>
-	<!-- 	Mybatis Blob -->
-	<a href="javascript: testJsonToString()">Json To String</a>
+<body onload='javascript:location.href="HOME/"'>
+	<a href="javascript:testJsonToString()">JSon To String</a>
 </body>
 </html>

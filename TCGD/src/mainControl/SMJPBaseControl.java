@@ -3,7 +3,7 @@ package mainControl;
 import java.io.File;
 import java.util.Random;
 
-public abstract class SMJPBaseControl extends SMJPDBControl {
+public abstract class SMJPBaseControl extends SMJPMainControl {
 
 	/**
 	 * upload file path setting
