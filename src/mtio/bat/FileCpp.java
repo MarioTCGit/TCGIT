@@ -1,4 +1,4 @@
-package mtio.bat.filecpp;
+package mtio.bat;
 
 import mtio.bat.RunBat;
 

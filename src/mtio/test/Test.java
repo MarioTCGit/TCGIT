@@ -1,6 +1,6 @@
-package mtio.bat.test;
+package mtio.test;
 
-import mtio.bat.filecpp.FileCpp;
+import mtio.bat.FileCpp;
 
 public class Test {
 
