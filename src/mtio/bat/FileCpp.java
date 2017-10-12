@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
-import java.util.List;
 
 public class FileCpp {
 
@@ -13,10 +12,6 @@ public class FileCpp {
 	private String cssFolder = "D:\\TCP\\css";
 	private String des = "D:\\TCP\\";
 
-	private static String create = " create ";
-	private static String directory = "directory ";
-	private static String success = "success";
-
 	private static String settings = "\\.settings";
 	private static String build = "\\build";
 	private static String action = "\\src\\action";
@@ -24,12 +19,25 @@ public class FileCpp {
 	private static String js = "\\WebContent\\js";
 	private static String image = "\\WebContent\\image";
 	private static String page = "\\WebContent\\page";
-	private static String jarpath = "\\WebContent\\WEB-INF\\lib";
+	private static String jar = "\\WebContent\\WEB-INF\\lib";
 
-	public void buildPrj(List<String> filenameList, String prjname) {
+	public void buildPrj(String prjname) {
 
 		StringBuilder content = new StringBuilder();
 		content.append("@echo off");
+		makeFolders(prjname, content);
+		copyJars(prjname, jar, content);
+		copyJsFiles(prjname, js, content);
+		copyCssFiles(prjname, css, content);
+		String command = des + prjname + ".bat";
+		createFile(new File(command), content);
+		File dir = new File(des);
+		new RunBat(command, dir);
+	}
+
+	private void makeFolders(String prjname, StringBuilder content) {
+		content.append(System.lineSeparator() + "echo ******************** starting making dir ********************");
+		content.append(System.lineSeparator() + "echo making dir...");
 		mdFolder(prjname, settings, content);
 		mdFolder(prjname, build, content);
 		mdFolder(prjname, action, content);
@@ -37,33 +45,29 @@ public class FileCpp {
 		mdFolder(prjname, js, content);
 		mdFolder(prjname, image, content);
 		mdFolder(prjname, page, content);
-		mdFolder(prjname, jarpath, content);
-		for (String filename : filenameList) {
-			copyJar(filename, prjname, jarpath, content);
-		}
-		copyJs(prjname, js, content);
-		copyCss(prjname, css, content);
-		String command = des + prjname + ".bat";
-		createFile(new File(command), content);
-		File dir = new File(des);
-		new RunBat(command, dir);
+		mdFolder(prjname, jar, content);
+		content.append(System.lineSeparator() + "echo ******************** dir made successful ********************");
 	}
 
-	private void mdFolder(String prjname, String path, StringBuilder content) {
+	protected void mdFolder(String prjname, String path, StringBuilder content) {
 		content.append(System.lineSeparator() + "md " + des + prjname + path);
-		content.append(System.lineSeparator() + "echo " + directory + path + create + success);
 	}
 
-	private void copyJar(String filename, String prjname, String path, StringBuilder content) {
-		content.append(System.lineSeparator() + "xcopy \"" + jarFolder + "\\" + filename + "\" \"" + des + prjname
-				+ path + "\" /e /i /h");
+	private void copyJars(String prjname, String path, StringBuilder content) {
+		content.append(System.lineSeparator() + "echo ******************** starting copy jars ********************");
+		content.append(
+				System.lineSeparator() + "xcopy \"" + jarFolder + "\" \"" + des + prjname + path + "\" /e /i /h");
 	}
 
-	private void copyJs(String prjname, String path, StringBuilder content) {
+	private void copyJsFiles(String prjname, String path, StringBuilder content) {
+		content.append(
+				System.lineSeparator() + "echo ******************** starting copy js files ********************");
 		content.append(System.lineSeparator() + "xcopy \"" + jsFolder + "\" \"" + des + prjname + path + "\" /e /i /h");
 	}
 
-	private void copyCss(String prjname, String path, StringBuilder content) {
+	private void copyCssFiles(String prjname, String path, StringBuilder content) {
+		content.append(
+				System.lineSeparator() + "echo ******************** starting copy css files ********************");
 		content.append(
 				System.lineSeparator() + "xcopy \"" + cssFolder + "\" \"" + des + prjname + path + "\" /e /i /h");
 	}
