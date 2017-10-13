@@ -7,10 +7,10 @@ import java.io.OutputStreamWriter;
 
 public class FileCpp {
 
-	private String jarFolder = "D:\\TCP\\jar";
-	private String jsFolder = "D:\\TCP\\js";
-	private String cssFolder = "D:\\TCP\\css";
 	private String des = "D:\\TCP\\";
+	private String jarFolder = des + "jar";
+	private String jsFolder = des + "js";
+	private String cssFolder = des + "css";
 
 	private static String settings = "\\.settings";
 	private static String build = "\\build";
@@ -46,7 +46,7 @@ public class FileCpp {
 		mdFolder(prjname, image, content);
 		mdFolder(prjname, page, content);
 		mdFolder(prjname, jar, content);
-		content.append(System.lineSeparator() + "echo ******************** dir made successful ********************");
+		content.append(System.lineSeparator() + "echo ******************** dir made successfully ********************");
 	}
 
 	protected void mdFolder(String prjname, String path, StringBuilder content) {

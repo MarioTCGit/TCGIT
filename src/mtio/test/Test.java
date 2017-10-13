@@ -10,7 +10,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		FileCpp fc = new FileCpp();
-		fc.buildPrj("A");
+		fc.buildPrj("ZZZZ");
 	}
 
 	private static void testReadProperties() {
